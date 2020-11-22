@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/icon/goke.ico}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/icon/goke.ico}" type="image/x-icon">
+
+    <title>测试用了生成系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- 自定义css模板 -->
+    <link th:href="@{/css/signin.css}" rel="stylesheet">
+    <link th:href="@{/css/test.css}" rel="stylesheet">
+
+    <!--    <link href="https://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">-->
+</head>
+
+<body>
+<div class="container">
+    <form class="form-signin" th:action="@{/login}" method="post">
+        <h2 class="form-signin-heading">请登录</h2>
+        <label for="userName" class="sr-only">用户名</label>
+        <input type="text" id="userName" name="userName" class="form-control" placeholder="用户名" required autofocus>
+        <label for="passWord" name="passWord" class="sr-only">密码</label>
+        <input type="passWord" id="passWord" name="passWord" class="form-control" placeholder="密码" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> 记住密码(未实现，浏览器自带有）
+                <!--                    <small> 怎么没有效果呢？？？</small>-->
+            </label>
+        </div>
+        <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+    </form>
+</div> <!-- /container -->
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcase.mapper.CaseMapper">
+    <resultMap id="ResultMap" type="com.abcase.entity.Case">
+        <result column="caseId" jdbcType="INTEGER" property="case_id"/>
+        <result column="sysName" jdbcType="VARCHAR" property="sys_name"/>
+        <result column="caseNo" jdbcType="VARCHAR" property="case_no"/>
+        <result column="itemName" jdbcType="VARCHAR" property="item_name"/>
+        <result column="itemDesc" jdbcType="VARCHAR" property="item_desc"/>
+        <result column="casePriority" jdbcType="INTEGER" property="case_priority"/>
+        <result column="transactionType" jdbcType="INTEGER" property="transaction_type"/>
+        <result column="testType" jdbcType="INTEGER" property="test_type"/>
+        <result column="caseAttr" jdbcType="INTEGER" property="case_attr"/>
+        <result column="casePre" jdbcType="VARCHAR" property="case_pre"/>
+        <result column="caseStep" jdbcType="VARCHAR" property="case_step"/>
+        <result column="caseExpect" jdbcType="VARCHAR" property="case_expect"/>
+        <result column="relationNo" jdbcType="VARCHAR" property="relation_no"/>
+        <result column="atpNo" jdbcType="VARCHAR" property="atp_no"/>
+        <result column="atpRuntype" jdbcType="INTEGER" property="atp_runtype"/>
+        <result column="owner" jdbcType="VARCHAR" property="owner"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+
+    <!--查询task，如果有指定userId，则根据userId进行查询，否则返回所有task-->
+    <select id="selectCase" resultMap="ResultMap">
+        select * from task where 1=1
+        <if test="sysName != null">
+            and sys_name=#{sysName}
+        </if>
+        <if test="owner != null and owner != ''">
+            and owner=#{owner}
+        </if>
+
+    </select>
+
+    <insert id="insertCase">
+        insert into case_info
+        (case_id,sys_name,case_no,item_name,item_desc,case_priority,transaction_type,test_type,
+        case_attr,case_pre,case_step,case_expect,relation_no,atp_no,atp_runtype,owner,status)
+        values
+        (#{caseId},#{sysName},#{caseNo},#{itemName},#{itemDesc},#{casePriority},#{transactionType},#{testType},
+        #{caseAttr},#{casePre},#{caseStep},#{caseExpect},#{relationNo},#{atpNo},#{atpRuntype},#{owner},#{status})
+    </insert>
+
+
+<!--    <update id="updateTask">-->
+<!--        &lt;!&ndash;        如果任务ID为0，认为是在创建任务&ndash;&gt;-->
+<!--        &lt;!&ndash;        <if test="#taskId != 0">&ndash;&gt;-->
+<!--        update task set case_id = #{caseId}-->
+<!--        &lt;!&ndash;        </if>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <if test="#taskId = 0">&ndash;&gt;-->
+<!--        &lt;!&ndash;            insert into set&ndash;&gt;-->
+<!--        &lt;!&ndash;        </if>&ndash;&gt;-->
+
+<!--        <if test="progress != null">-->
+<!--            ,progress=#{progress}-->
+<!--        </if>-->
+<!--        <if test="projectId!=null and projectId!=''">-->
+<!--            ,projectId=#{projectId}-->
+<!--        </if>-->
+<!--        <if test="taskDesc!=null and taskDesc!=''">-->
+<!--            ,taskDesc=#{taskDesc}-->
+<!--        </if>-->
+<!--        <if test="progressDesc!=null and progressDesc!=''">-->
+<!--            ,progressDesc=#{progressDesc}-->
+<!--        </if>-->
+<!--        <if test="endTime!=null and endTime!=''">-->
+<!--            , endTime=#{endTime}-->
+<!--        </if>-->
+<!--        <if test="owner!=null and owner!=''">-->
+<!--            , owner=#{owner}-->
+<!--        </if>-->
+<!--        <if test="status!=null and status!=''">-->
+<!--            , status=#{status}-->
+<!--        </if>-->
+<!--        <if test="updateTime!=null and updateTime!=''">-->
+<!--            , updateTime=#{updateTime}-->
+<!--        </if>-->
+<!--        <if test="significance!=null and significance!=''">-->
+<!--            , significance=#{significance}-->
+<!--        </if>-->
+<!--        <if test="priority!=null and priority!=''">-->
+<!--            , priority=#{priority}-->
+<!--        </if>-->
+<!--        <if test="resource!=null and resource!=''">-->
+<!--            , resource=#{resource}-->
+<!--        </if>-->
+<!--        where taskId = #{taskId}-->
+<!--    </update>-->
+
+
+
+</mapper>
