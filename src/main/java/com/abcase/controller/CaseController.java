@@ -13,25 +13,25 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * 接口测试用例
  */
 
 @Controller
-@RequestMapping("/caseInfo")
+@RequestMapping("/interfaceCase")
 public class CaseController {
     @Value("${interfaceFilePath}")
-    private String interfaceFilePath;
+    private String interfaceFilePath;//接口模板文档
 
     @Value("${caseFilePath}")
-    private String caseFilePath;
+    private String caseFilePath;//测试用例文档
 
 
     @Value("${systemName}")
-    private String systemName;
+    private String systemName;//系统名
 
 
     @Value("${designer}")
-    private String designer;
+    private String designer;//用例设计者
 
     @Autowired
     private CaseService caseService;

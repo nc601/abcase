@@ -13,6 +13,9 @@ public class CaseGenService {
     public void interfaceCaseGen(Case icase, File interfaceFile, File caseFile) {
         ExcelUtil obj = new ExcelUtil();
         List<List> list = obj.readExcel(interfaceFile);
+        if (list == null) {
+            return;
+        }
         List<Case> allCase = new ArrayList<>();
         int no = 1;
         for (List line : list) {
@@ -65,7 +68,7 @@ public class CaseGenService {
             for (String v : valArr) {
                 if (StringUtils.isNoneEmpty(v)) {
                     Case caseInfo = new Case();
-                    copyCaseInfo(caseInfo,oneCase);
+                    copyCaseInfo(caseInfo, oneCase);
                     caseInfo.setCaseStep("1." + line.get(4) + "正常输入，输入值等于" + v + "\n" +
                             "2.post发送。");
                     caseInfo.setCaseAttr("正向");
@@ -89,41 +92,41 @@ public class CaseGenService {
                 negtiveCaseInfo.setCaseExpect("响应失败");
                 caseList.add(negtiveCaseInfo);
                 Case empCaseInfo = new Case();
-                copyCaseInfo(empCaseInfo,oneCase);
+                copyCaseInfo(empCaseInfo, oneCase);
                 empCaseInfo.setCaseStep("1." + line.get(4) + "异常输入，输入空字符\n" +
                         "2.post发送。");
                 empCaseInfo.setCaseExpect("响应失败");
                 caseList.add(empCaseInfo);
             } else if (type.equals("boolean")) {
                 Case positiveCaseInfo = new Case();
-                copyCaseInfo(positiveCaseInfo,oneCase);
+                copyCaseInfo(positiveCaseInfo, oneCase);
                 positiveCaseInfo.setCaseStep("1." + line.get(4) + "正常输入，输入true\n" +
                         "2.post发送。");
                 positiveCaseInfo.setCaseAttr("正向");
                 positiveCaseInfo.setCaseExpect("响应成功");
                 caseList.add(positiveCaseInfo);
                 Case negtiveCaseInfo = new Case();
-                copyCaseInfo(negtiveCaseInfo,oneCase);
+                copyCaseInfo(negtiveCaseInfo, oneCase);
                 negtiveCaseInfo.setCaseStep("1." + line.get(4) + "正常输入，输入false\n" +
                         "2.post发送。");
                 negtiveCaseInfo.setCaseExpect("响应成功");
                 caseList.add(negtiveCaseInfo);
             } else {
                 Case positiveCaseInfo = new Case();
-                copyCaseInfo(positiveCaseInfo,oneCase);
+                copyCaseInfo(positiveCaseInfo, oneCase);
                 positiveCaseInfo.setCaseStep("1." + line.get(4) + "正常输入，输入数字长度小于等于" + len + "位\n" +
                         "2.post发送。");
                 positiveCaseInfo.setCaseAttr("正向");
                 positiveCaseInfo.setCaseExpect("响应成功");
                 caseList.add(positiveCaseInfo);
                 Case negtiveCaseInfo = new Case();
-                copyCaseInfo(negtiveCaseInfo,oneCase);
+                copyCaseInfo(negtiveCaseInfo, oneCase);
                 negtiveCaseInfo.setCaseStep("1." + line.get(4) + "异常输入，输入数字长度大于" + len + "位\n" +
                         "2.post发送。");
                 negtiveCaseInfo.setCaseExpect("响应失败");
                 caseList.add(negtiveCaseInfo);
                 Case empCaseInfo = new Case();
-                copyCaseInfo(empCaseInfo,oneCase);
+                copyCaseInfo(empCaseInfo, oneCase);
                 empCaseInfo.setCaseStep("1." + line.get(4) + "异常输入，输入null\n" +
                         "2.post发送。");
                 empCaseInfo.setCaseExpect("响应失败");
