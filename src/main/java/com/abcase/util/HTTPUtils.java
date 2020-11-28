@@ -23,7 +23,7 @@ public abstract class HTTPUtils {
             e.printStackTrace();
 
         } finally {
-            // getMethod.abort();
+             getMethod.abort();
         }
         return response;
     }

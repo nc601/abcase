@@ -23,17 +23,16 @@
     <form class="bs-example bs-example-form" th:action="@{/webcase/doParse}" method="post"  role="form">
         <div class="input-group">
             <span class="input-group-addon">页面地址:</span>
-            <input type="text" name="pageUrl" class="form-control" placeholder="eg:http://www.test.com">
+            <input type="text" name="pageUrl" id="pageUrl" class="form-control" placeholder="eg:http://www.test.com">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">cookie值:</span>
-            <input type="text" name="cookieVal" class="form-control">
+            <input type="text" name="cookieVal" id="cookieVal" class="form-control">
         </div>
         <br>
-        <div align="center"><button type="button" class="btn btn-primary">解析页面</button></div>
+        <div align="center"><button type="submit" class="btn btn-primary">解析页面</button></div>
     </form>
-
 </div>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
