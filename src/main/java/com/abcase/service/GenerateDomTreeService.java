@@ -1,4 +1,4 @@
-package com.abchina.autotest.service;
+package com.abcase.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
