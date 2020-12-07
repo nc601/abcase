@@ -41,8 +41,8 @@ public class ParseService {
             if (name != null) {
                 tags.add("name:" + name);
             }
-            map.put("select", tags);
         }
+        map.put("select", tags);
     }
 
     private void parseInputTag(Elements inputs, Map<String, List> map) {
@@ -69,8 +69,8 @@ public class ParseService {
                     continue;
                 }
             }
-            map.put("input", tags);
         }
+        map.put("input", tags);
     }
 
     private void deriveOperate(String pageUrl, Map<String, List> map) throws InterruptedException {
