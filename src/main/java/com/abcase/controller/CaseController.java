@@ -26,13 +26,6 @@ public class CaseController {
     private String caseFilePath;//测试用例文档
 
 
-    @Value("${systemName}")
-    private String systemName;//系统名
-
-
-    @Value("${designer}")
-    private String designer;//用例设计者
-
     @Autowired
     private CaseService caseService;
 
@@ -45,8 +38,6 @@ public class CaseController {
 
     @RequestMapping("/caseInfo")
     public String getCaseInfo(Case caseInfo) {
-        caseInfo.setSysName(systemName);
-        caseInfo.setOwner(designer);
         caseService.getCaseInfo(caseInfo, new File(interfaceFilePath), new File(caseFilePath));
         return "case";
     }

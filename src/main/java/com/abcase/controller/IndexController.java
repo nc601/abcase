@@ -11,8 +11,13 @@ public class IndexController {
     @Autowired
 //    private ProjectService projectService;
 
-    @RequestMapping("/init")
-    public String index(Map<String, Object> model) {
+    @RequestMapping("/web")
+    public String web(Map<String, Object> model) {
         return "case";
+    }
+
+    @RequestMapping("/inter")
+    public String inter(Map<String, Object> model) {
+        return "sysconfig";
     }
 }
