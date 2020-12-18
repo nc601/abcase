@@ -99,7 +99,7 @@ public class ExcelUtil {
                 sheetA.addCell(labelA);
             }
             //将测试用例写入文件中
-            for (int i = 1; i < caseList.size(); i++) {
+            for (int i = 0; i < caseList.size(); i++) {
                 String[] itemArr = covertObjectToArray(caseList.get(i), title.length);
                 for (int j = 0; j < title.length; j++) {
                     labelA = new Label(j, i, itemArr[j]);
